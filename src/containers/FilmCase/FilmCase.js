@@ -10,10 +10,10 @@ class FilmCase extends Component {
     // }
     state = {
         films: {
-            salad: 1,
+            salad: 2,
             bacon: 2,
             cheese: 3,
-            meat: 1
+            meat: 2
         }
     }
 

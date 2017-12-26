@@ -1,6 +1,6 @@
 .Film {
     width: 100%;
-    margin: auto;
+    margin: auto auto;
     height: 250px;
     overflow: scroll;
     text-align: center;

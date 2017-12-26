@@ -7,7 +7,10 @@ const film = ( props ) => {
     let transformedFilms= Object.keys( props.films)
         .map( filmKey => {
             return [...Array( props.films[filmKey] )].map( ( _, i ) => {
-                return <Films key={filmKey + i} type={filmKey} />;
+
+                return <div style={{display:'inline-block'}}>
+                <Films key={filmKey + i} type={filmKey} />
+                </div>;
             } );
         } )
         .reduce((arr, el) => {
@@ -18,9 +21,8 @@ const film = ( props ) => {
     }
     return (
         <div className={classes.Film}>
-            <Films type="bread-top" />
             {transformedFilms }
-            <Films type="bread-bottom" />
+            <Films type="box-bottom" />
         </div>
     );
 };
