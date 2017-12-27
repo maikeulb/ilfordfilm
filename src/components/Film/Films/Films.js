@@ -8,19 +8,19 @@ class Films extends Component {
 
         switch ( this.props.type ) {
             case ( 'delta3200' ):
-                films = <div> <img src={'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta3200.jpg?alt=media&token=2a698775-7007-451b-8e2a-28e161758c02'}/>
+                films = <div> <img src={'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta3200.jpg?alt=media&token=2a698775-7007-451b-8e2a-28e161758c02'} alt="delta3200"/>
                         </div>;
                 break;
             case ( 'delta100' ):
-                films = <div> <img src={'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta100.jpg?alt=media&token=6f493cce-abc0-42c3-8664-12aec2c12034'}/>
+                films = <div> <img src={'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta100.jpg?alt=media&token=6f493cce-abc0-42c3-8664-12aec2c12034'} alt="delta100"/>
                         </div>;
                 break;
             case ( 'panf' ):
-                films = <div> <img src = {'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/panf.jpg?alt=media&token=0d96e704-c8e2-471d-847c-3ae51383804b'}/>
+                films = <div> <img src = {'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/panf.jpg?alt=media&token=0d96e704-c8e2-471d-847c-3ae51383804b'} alt="panf"/>
                         </div>;
                 break;
             case ( 'hp5' ):
-                films = <div> <img src = {'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta100.jpg?alt=media&token=6f493cce-abc0-42c3-8664-12aec2c12034'}/>
+                films = <div> <img src = {'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta100.jpg?alt=media&token=6f493cce-abc0-42c3-8664-12aec2c12034'} alt="hp5"/>
                         </div>;
                 break;
             default:

@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import Film from '../../components/Film/Film';
 import Controls from '../../components/Film/Controls/Controls';
-import { Modal, Button } from 'antd';
-
-import styled from 'styled-components';
+import { Modal } from 'antd';
+import OrderSummary from '../../components/Film/OrderSummary/OrderSummary';
 
 const FILM_PRICES = {
     panf: 4.5,
@@ -42,7 +41,6 @@ class FilmCase extends Component {
         totalPrice: 0,
         purchasable: false,
         purchasing: false,
-        visible: false
     }
 
     updatePurchaseState (films) {
@@ -98,13 +96,15 @@ class FilmCase extends Component {
         return (
             <Aux>
               <Modal 
-                Title = "Your Order"
+                title = "Your Order"
                 visible={this.state.purchasing}
                 onOk={this.purchaseContinueHandler}
                 onCancel={this.purchaseCancelHandler}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+
+                <OrderSummary 
+                        films={this.state.films}
+                        price={this.state.totalPrice}/>
+
               </Modal>
 
                 <Film films ={this.state.films} />

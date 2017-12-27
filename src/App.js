@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
 
-import Button from 'antd/lib/button';
-import Layout from './components/Layout/Layout';
+import AppLayout from './components/Layout/AppLayout';
 import FilmCase from './containers/FilmCase/FilmCase';
 import './App.css';
 
 import styled from 'styled-components';
 
-const Container = styled.div`
-  margin-top: 16px;
-`;
-
 class App extends Component {
+
+// const Container = styled.div`
+//   margin-top: 16px;
+// `;
+
   render () {
     return (
       <div className="App">
-
-        <Container>
-          <Layout>
+          <AppLayout>
             <FilmCase/>
-          </Layout>
-        </Container>
-
+          </AppLayout>
       </div>
     );
   }

@@ -29,7 +29,8 @@ const OrderButton = styled.div`
 
 const Controls = (props) => (
     <div>
-
+      <br>
+      </br>
       <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
       {controls.map(ctrl => (
       <Container>

@@ -1,9 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import Icon from 'antd/lib/icon';
 import { Button } from 'antd';
-
 
 const Container = styled.div`
     display: flex;
