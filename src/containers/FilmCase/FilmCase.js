@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux';
 import Film from '../../components/Film/Film';
+import Controls from '../../components/Film/Controls/Controls';
 
 import styled from 'styled-components';
+
+const FILM_PRICES = {
+    panf: 4.5,
+    delta100: 4.0,
+    hp5: 5.5,
+    delta3200: 8.0
+};
 
 class FilmCase extends Component {
     // constructor(props) {
@@ -13,18 +21,74 @@ class FilmCase extends Component {
 
     state = {
         films: {
-            panf: 2,
-            delta100: 22,
-            hp5: 3,
-            delta3200: 2
+            panf: 0,
+            delta100: 0,
+            hp5: 0,
+            delta3200: 0
+        },
+        totalPrice: 0,
+        purchasable: false
+    }
+
+    updatePurchaseState (films) {
+        const sum = Object.keys( films)
+            .map( filmKey => {
+                return films[filmKey];
+            } )
+            .reduce( ( sum, el ) => {
+                return sum + el;
+            }, 0 );
+        this.setState( { purchasable: sum > 0 } );
+    }
+
+    addFilmHandler = ( type ) => {
+        const oldCount = this.state.films[type];
+        const updatedCount = oldCount + 1;
+        const updatedFilms= {
+            ...this.state.films
+        };
+        updatedFilms[type] = updatedCount;
+        const priceAddition = FILM_PRICES[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice + priceAddition;
+        this.setState( { totalPrice: newPrice, films: updatedFilms} );
+        this.updatePurchaseState(updatedFilms);
+    }
+
+    removeFilmHandler = ( type ) => {
+        const oldCount = this.state.films[type];
+        if ( oldCount <= 0 ) {
+            return;
         }
+        const updatedCount = oldCount - 1;
+        const updatedFilms= {
+            ...this.state.films
+        };
+        updatedFilms[type] = updatedCount;
+        const priceDeduction = FILM_PRICES[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice - priceDeduction;
+        this.setState( { totalPrice: newPrice, films: updatedFilms} );
+        this.updatePurchaseState(updatedFilms);
     }
 
     render () {
+        const disabledInfo = {
+            ...this.state.films
+        };
+        for ( let key in disabledInfo ) {
+            disabledInfo[key] = disabledInfo[key] <= 0
+        }
+        // {salad: true, meat: false, ...}
         return (
             <Aux>
                 <Film films ={this.state.films} />
-                <div>Controls</div>
+                <Controls
+                    filmAdded={this.addFilmHandler}
+                    filmRemoved={this.removeFilmHandler}
+                    disabled={disabledInfo}
+                    purchasable={this.state.purchasable}
+                    price={this.state.totalPrice} />
             </Aux>
         );
     }

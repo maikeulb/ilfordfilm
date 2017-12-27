@@ -33,12 +33,6 @@ class App extends Component {
           </Layout>
         </Container>
 
-        <Button type="primary">Button</Button>
-
-        <Wrapper>
-          <Title>Hello World, this is my first styled component!</Title>
-        </Wrapper>
-
       </div>
     );
   }

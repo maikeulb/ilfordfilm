@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Control from './Control/Control';
+import styled from 'styled-components';
 
 const controls = [
     { label: 'Panf', type: 'panf' },
@@ -9,20 +10,30 @@ const controls = [
     { label: 'Delta3200', type: 'delta3200' },
 ];
 
+const Container = styled.div`
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: auto;
+`;
+
 const Controls = (props) => (
-    <div className={classes.Controls}>
-        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
-        {controls.map(ctrl => (
-            <Control 
-                key={ctrl.label} 
-                label={ctrl.label}
-                added={() => props.ingredientAdded(ctrl.type)}
-                removed={() => props.ingredientRemoved(ctrl.type)}
-                disabled={props.disabled[ctrl.type]} />
-        ))}
-        <button 
-            className={classes.OrderButton}
-            disabled={!props.purchasable}>ORDER NOW</button>
+    <div>
+      <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
+      {controls.map(ctrl => (
+      <Container>
+        <Control 
+          key={ctrl.label} 
+          label={ctrl.label}
+          added={() => props.filmAdded(ctrl.type)}
+          removed={() => props.filmRemoved(ctrl.type)}
+          disabled={props.disabled[ctrl.type]} />
+      </Container>
+    ))}
+      <button>
+        ORDER NOW
+      </button>
     </div>
 );
 
