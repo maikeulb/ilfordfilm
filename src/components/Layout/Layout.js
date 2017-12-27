@@ -1,12 +1,15 @@
 import React from 'react';
 
 import Aux from '../../hoc/Aux';
-import classes from './Layout.css';
+
+// const style = {
+//   marginTop: '16px'
+// };
 
 const layout = ( props ) => (
     <Aux>
         <div>Toolbar, SideDrawer, Backdrop</div>
-        <main className={classes.Content}>
+        <main>
             {props.children}
         </main>
     </Aux>
