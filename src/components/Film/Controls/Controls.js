@@ -1,7 +1,9 @@
 import React from 'react';
+import { Button } from 'antd';
 
 import Control from './Control/Control';
 import styled from 'styled-components';
+// import NumberFormat from 'react-number-format';
 
 const controls = [
     { label: 'Panf', type: 'panf' },
@@ -18,8 +20,16 @@ const Container = styled.div`
     margin: auto;
 `;
 
+const OrderButton = styled.div`
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.2em;
+    padding: 15px 30px;
+`;
+
 const Controls = (props) => (
     <div>
+
       <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
       {controls.map(ctrl => (
       <Container>
@@ -31,9 +41,15 @@ const Controls = (props) => (
           disabled={props.disabled[ctrl.type]} />
       </Container>
     ))}
-      <button>
-        ORDER NOW
-      </button>
+
+    <OrderButton>
+    <Button type="primary"
+      disabled={!props.purchasable}
+      onClick={props.ordered}>
+      ORDER 
+    </Button>
+    </OrderButton>
+
     </div>
 );
 

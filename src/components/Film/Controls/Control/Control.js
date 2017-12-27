@@ -1,6 +1,5 @@
 import React from 'react';
 
-import classes from './Control.css';
 import styled from 'styled-components';
 import Icon from 'antd/lib/icon';
 import { Button } from 'antd';
@@ -20,7 +19,6 @@ const ButtonContainer = styled.div`
     margin: 0 5px;
     width: 40px;
     cursor: pointer;
-    outline: none;
 `;
 
 const LabelContainer = styled.div`

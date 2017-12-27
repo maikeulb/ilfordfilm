@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 import Film from '../../components/Film/Film';
 import Controls from '../../components/Film/Controls/Controls';
+import { Modal, Button } from 'antd';
 
 import styled from 'styled-components';
 
@@ -19,6 +20,18 @@ class FilmCase extends Component {
     //     this.state = {...}
     // }
 
+    purchaseHandler = () => {
+        this.setState({purchasing: true});
+    }
+
+    purchaseCancelHandler = () => {
+        this.setState({purchasing: false});
+    }
+
+    purchaseContinueHandler = () => {
+        alert('You continue!');
+    }
+
     state = {
         films: {
             panf: 0,
@@ -27,7 +40,9 @@ class FilmCase extends Component {
             delta3200: 0
         },
         totalPrice: 0,
-        purchasable: false
+        purchasable: false,
+        purchasing: false,
+        visible: false
     }
 
     updatePurchaseState (films) {
@@ -82,13 +97,25 @@ class FilmCase extends Component {
         // {salad: true, meat: false, ...}
         return (
             <Aux>
+              <Modal 
+                Title = "Your Order"
+                visible={this.state.purchasing}
+                onOk={this.purchaseContinueHandler}
+                onCancel={this.purchaseCancelHandler}>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+              </Modal>
+
                 <Film films ={this.state.films} />
                 <Controls
                     filmAdded={this.addFilmHandler}
                     filmRemoved={this.removeFilmHandler}
                     disabled={disabledInfo}
                     purchasable={this.state.purchasable}
+                    ordered={this.purchaseHandler}
                     price={this.state.totalPrice} />
+
             </Aux>
         );
     }
