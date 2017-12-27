@@ -27,20 +27,20 @@ const LabelContainer = styled.div`
 `;
 
 const control = (props) => (
-    <Container>
-        <LabelContainer>
-          {props.label}
-        </LabelContainer>
-        <ButtonContainer>
-            <Button shape="circle" icon="minus" 
-            onClick={props.removed} 
-            disabled={props.disabled}/>
-        </ButtonContainer>
-        <ButtonContainer>
-            <Button shape="circle" icon="plus" 
-            onClick={props.added}/>
-        </ButtonContainer>
-    </Container>
+  <Container>
+    <LabelContainer>
+      {props.label}
+    </LabelContainer>
+    <ButtonContainer>
+      <Button shape="circle" icon="minus" 
+      onClick={props.removed} 
+      disabled={props.disabled}/>
+    </ButtonContainer>
+    <ButtonContainer>
+      <Button shape="circle" icon="plus" 
+      onClick={props.added}/>
+    </ButtonContainer>
+  </Container>
 );
 
 export default control;
