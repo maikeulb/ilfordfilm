@@ -1,29 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import panfImg from '../../../assets/panf.jpg';
+import delta100Img from '../../../assets/delta100.jpg';
+import hp5Img from '../../../assets/hp5.jpg';
+import delta3200Img from '../../../assets/delta3200.jpg';
+
 class Films extends Component {
   render () {
     let films = null;
 
       switch ( this.props.type ) {
-        case ( 'delta3200' ):
+        case ( 'panf' ):
           films = <div> 
-                    <img src={'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta3200.jpg?alt=media&token=2a698775-7007-451b-8e2a-28e161758c02'} alt="delta3200"/>
+                    <img src = {panfImg} alt ="panf" />
                   </div>;
           break;
         case ( 'delta100' ):
           films = <div> 
-                    <img src={'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta100.jpg?alt=media&token=6f493cce-abc0-42c3-8664-12aec2c12034'} alt="delta100"/>
-                  </div>;
-          break;
-        case ( 'panf' ):
-          films = <div> 
-                    <img src = {'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/panf.jpg?alt=media&token=0d96e704-c8e2-471d-847c-3ae51383804b'} alt="panf"/>
+                    <img src = {delta100Img} alt ="delta100" />
                   </div>;
           break;
         case ( 'hp5' ):
           films = <div> 
-                    <img src = {'https://firebasestorage.googleapis.com/v0/b/zuikoshop.appspot.com/o/delta100.jpg?alt=media&token=6f493cce-abc0-42c3-8664-12aec2c12034'} alt="hp5"/>
+                    <img src = {hp5Img} alt ="hp5" />
+                  </div>;
+          break;
+        case ( 'delta3200' ):
+          films = <div>
+                    <img src = {delta3200Img} alt ="delta3200" />
                   </div>;
           break;
         default:
