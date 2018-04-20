@@ -25,31 +25,26 @@ class FilmCase extends Component {
   //     this.state = {...}
   // }
   state = {
-    films: {
-      panf: 0,
-      delta100: 0,
-      hp5: 0,
-      delta3200: 0
-    },
+    films: null,
     totalPrice: 0,
     purchasable: false,
     purchasing: false,
     loading: false,
   }
 
-  // componentDidMount() {
-  //   axios.get('https://ilfordfilm-61890.firebaseio.com/films.json')
-  //     .then(response => {
-  //       this.setState({
-  //         films: response.data
-  //       });
-  //     })
-  //     .catch(error => {
-  //       this.setState({
-  //         error: true
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    axios.get('https://ilfordfilm-61890.firebaseio.com/films.json')
+      .then(response => {
+        this.setState({
+          films: response.data
+        });
+      })
+      .catch(error => {
+        this.setState({
+          error: true
+        });
+      });
+  }
 
   updatePurchaseState(films) {
     const sum = Object.keys(films)
@@ -154,35 +149,45 @@ class FilmCase extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
     let orderSummary = null;
-    orderSummary =
-      <OrderSummary 
-            films={this.state.films}
-            price={this.state.totalPrice}
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler}/>
+    let film = this.state.error ? <p>Films can't be loaded!</p> :
+      <Spin />;
 
+
+    if (this.state.films) {
+      film = (
+        <Aux>
+            <Film films={this.state.films} />
+            <Controls
+              filmAdded={this.addFilmHandler}
+              filmRemoved={this.removeFilmHandler}
+              disabled={disabledInfo}
+              purchasable={this.state.purchasable}
+              ordered={this.purchaseHandler}
+              price={this.state.totalPrice} />
+        </Aux>
+      );
+
+      orderSummary =
+        <OrderSummary 
+              films={this.state.films}
+              price={this.state.totalPrice}
+              purchaseCancelled={this.purchaseCancelHandler}
+              purchaseContinued={this.purchaseContinueHandler}/>
+
+    }
     if (this.state.loading) {
-      orderSummary = <Spin />
+      orderSummary = <Spin />;
     }
     return (
       <Aux>
-        <Modal 
-          title = "Your Order"
-          visible={this.state.purchasing}
-          onOk={this.purchaseContinueHandler}
-          onCancel={this.purchaseCancelHandler}>
-          {orderSummary}
-        </Modal>
-
-        <Film films ={this.state.films} />
-        <Controls
-          filmAdded={this.addFilmHandler}
-          filmRemoved={this.removeFilmHandler}
-          disabled={disabledInfo}
-          purchasable={this.state.purchasable}
-          ordered={this.purchaseHandler}
-          price={this.state.totalPrice} />
-
+          <Modal 
+            title = "Your Order"
+            visible={this.state.purchasing}
+            onOk={this.purchaseContinueHandler}
+            onCancel={this.purchaseCancelHandler}>
+            {orderSummary}
+          </Modal>
+          {film}
       </Aux>
     );
   }
