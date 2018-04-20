@@ -1,9 +1,14 @@
 import React, {
   Component
 } from 'react';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
 
 import AppLayout from './hoc/AppLayout';
 import FilmCase from './containers/FilmCase/FilmCase';
+import Checkout from './containers/Checkout/Checkout';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +16,10 @@ class App extends Component {
     return (
       <div className="App">
         <AppLayout>
-          <FilmCase/>
+          <Switch>
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/" exact component={FilmCase} />
+          </Switch>
         </AppLayout>
       </div>
     );
