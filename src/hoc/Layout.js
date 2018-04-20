@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 import Aux from './Aux';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout as AntLayout, Menu, Icon } from 'antd';
 import styled from 'styled-components';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer, Sider } = AntLayout;
 
 const Trigger = styled.div`
   font-size: 18px;
@@ -23,7 +23,7 @@ const Logo = styled.div`
   font-weight: bold;
 `;
 
-class AppLayout extends Component {
+class Layout extends Component {
 
   state = {
     collapsed: true,
@@ -38,7 +38,7 @@ class AppLayout extends Component {
   render () {
     return (
       <Aux>
-        <Layout>
+        <AntLayout>
           <Sider
             trigger={null}
             collapsedWidth="0"
@@ -57,7 +57,7 @@ class AppLayout extends Component {
             </Menu>
           </Sider>
 
-        <Layout style={{height:"100vh"}}>
+        <AntLayout style={{height:"100vh"}}>
             <Header style={{ background: '#fff', padding: 0 }}>
               <Trigger>
                 <Icon
@@ -73,11 +73,11 @@ class AppLayout extends Component {
             <Footer style={{ textAlign: 'center' }}>
               ©2018
             </Footer>
-          </Layout>
-        </Layout>
+          </AntLayout>
+        </AntLayout>
       </Aux>
     )
   }
 }
 
-export default AppLayout;
+export default Layout;

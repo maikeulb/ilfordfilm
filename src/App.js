@@ -6,7 +6,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-import AppLayout from './hoc/AppLayout';
+import Layout from './hoc/Layout';
 import FilmCase from './containers/FilmCase/FilmCase';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
@@ -16,13 +16,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppLayout>
+        <Layout>
           <Switch>
             <Route path="/checkout" component={Checkout} />
             <Route path="/orders" component={Orders} />
             <Route path="/" exact component={FilmCase} />
           </Switch>
-        </AppLayout>
+        </Layout>
       </div>
     );
   }
