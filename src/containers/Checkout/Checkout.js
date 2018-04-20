@@ -1,15 +1,12 @@
 import React, {
   Component
 } from 'react';
-import {
-  Route
-} from 'react-router-dom';
 
 import axios from '../../axios-orders';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
 import styled from 'styled-components';
-import { Form, Modal, Radio, Input, Button, Spin } from 'antd';
+import { Form, Modal, Input, InputNumber, Spin } from 'antd';
 
 const Container = styled.div `
   overflow-y: hidden;
@@ -25,30 +22,40 @@ const CollectionCreateForm = Form.create()(
       return (
         <Modal
           visible={visible}
-          title="Create a new collection"
+          title="Shipping Address"
           okText="Create"
           onCancel={onCancel}
           onOk={onCreate}
         >
           <Form layout="vertical">
-            <FormItem label="Title">
-              {getFieldDecorator('title', {
-                rules: [{ required: true, message: 'Please input the title of collection!' }],
+            <FormItem label="Name">
+              {getFieldDecorator('name', {
+                rules: [{ required: true, message: 'Please enter your name!' }],
               })(
                 <Input />
               )}
             </FormItem>
-            <FormItem label="Description">
-              {getFieldDecorator('description')(<Input type="textarea" />)}
-            </FormItem>
-            <FormItem className="collection-create-form_last-form-item">
-              {getFieldDecorator('modifier', {
-                initialValue: 'public',
+            <FormItem label="Address">
+              {getFieldDecorator('address', {
+                rules: [{ required: true, message: 'Please enter your address!' }],
               })(
-                <Radio.Group>
-                  <Radio value="public">Public</Radio>
-                  <Radio value="private">Private</Radio>
-                </Radio.Group>
+                <Input />
+              )}
+            </FormItem>
+            <FormItem label="City">
+              {getFieldDecorator('city', {
+                rules: [{ required: true, message: 'Please enter your city!' }],
+              })(
+                <Input />
+              )}
+            </FormItem>
+            <FormItem label="ZipCode">
+              {getFieldDecorator('zipCode', {
+                rules: [
+                  { required: true, message: 'Please enter a valid zipcode!' }
+                ],
+              })(
+                <InputNumber />
               )}
             </FormItem>
           </Form>
@@ -65,10 +72,10 @@ class Checkout extends Component {
     films: null,
     price: 0,
     name: '',
-    email: '',
     address: {
       street: '',
-      postalCode: ''
+      city: '',
+      zipCode: ''
     },
     loading: false,
     visible: false
@@ -91,6 +98,7 @@ class Checkout extends Component {
       if (err) {
         return;
       }
+    console.log(values)
     this.setState({
       loading: true,
       visible: true
@@ -98,16 +106,7 @@ class Checkout extends Component {
     const order = {
       films: this.state.films,
       price: this.state.totalPrice,
-      customer: {
-        name: 'Mike Barnes',
-        address: {
-          street: '123 Main St',
-          zipCode: '11011',
-          country: 'USA'
-        },
-        email: 'demo@example.com'
-      },
-      deliveryMethod: 'express'
+      orderData: values
     }
     axios.post('/orders.json', order)
       .then(response => {
@@ -152,10 +151,6 @@ class Checkout extends Component {
     this.props.history.goBack();
   }
 
-  // checkoutContinuedHandler = () => {
-  //   this.props.history.replace('/checkout/contact');
-  // }
-
   render() {
     let form = (
           <CollectionCreateForm
@@ -179,20 +174,5 @@ class Checkout extends Component {
     );
   }
 }
-
-  // render() {
-  //   return (
-  //     <Container>
-  //       <CheckoutSummary 
-  //          films={this.state.films}
-  //          checkoutCancelled={this.checkoutCancelledHandler}
-  //          checkoutContinued={this.checkoutContinuedHandler}/>
-  //       // <Route 
-  //          // path={this.props.match.path + '/contact'} 
-  //          // render={(props) => (<Contact films={this.state.films} price={this.state.totalPrice} {...props} />)} />
-  //     // </Container>
-  //   // );
-  // // }
-// // }
 
 export default Checkout;
