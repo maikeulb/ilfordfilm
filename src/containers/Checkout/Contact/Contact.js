@@ -13,10 +13,12 @@ const ContactContainer = styled.div `
     margin: 20px auto;
     width: 80%;
     text-align: center;
-    box-shadow: 0 2px 3px #ccc;
-    border: 1px solid #eee;
     padding: 10px;
     box-sizing: border-box;
+`;
+
+const ButtonContainer = styled.div `
+    padding: 20px;
 `;
 
 const InputContainer = styled.div `
@@ -70,12 +72,16 @@ class Contact extends Component {
   render() {
     let form = (
       <form>
-              <InputContainer><input type="text" name="name" placeholder="Your Name" /></InputContainer>
-              <InputContainer><input type="email" name="email" placeholder="Your Mail" /></InputContainer>
-              <InputContainer><input type="text" name="street" placeholder="Street" /></InputContainer>
-              <InputContainer><input type="text" name="postal" placeholder="Postal Code" /></InputContainer>
-              <InputContainer><Button type="primary" onClick={this.orderHandler}>ORDER</Button></InputContainer>
-            </form>
+        <InputContainer><input type="text" name="name" placeholder="Your Name" /></InputContainer>
+        <InputContainer><input type="email" name="email" placeholder="Your Mail" /></InputContainer>
+        <InputContainer><input type="text" name="street" placeholder="Street" /></InputContainer>
+        <InputContainer><input type="text" name="postal" placeholder="Postal Code" /></InputContainer>
+        <InputContainer>
+        <ButtonContainer>
+          <Button type="primary" onClick={this.orderHandler}>ORDER</Button>
+        </ButtonContainer>
+        </InputContainer>
+      </form>
     );
     if (this.state.loading) {
       form = <Spin />;

@@ -8,6 +8,12 @@ import {
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import Contact from './Contact/Contact';
 
+import styled from 'styled-components';
+
+const Container = styled.div `
+  overflow-y: hidden;
+`;
+
 class Checkout extends Component {
   state = {
     films: null,
@@ -41,7 +47,7 @@ class Checkout extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <CheckoutSummary 
            films={this.state.films}
            checkoutCancelled={this.checkoutCancelledHandler}
@@ -49,7 +55,7 @@ class Checkout extends Component {
         <Route 
            path={this.props.match.path + '/contact'} 
            render={(props) => (<Contact films={this.state.films} price={this.state.totalPrice} {...props} />)} />
-      </div>
+      </Container>
     );
   }
 }

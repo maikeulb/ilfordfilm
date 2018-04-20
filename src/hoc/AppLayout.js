@@ -62,7 +62,7 @@ class AppLayout extends Component {
             </Menu>
           </Sider>
 
-          <Layout>
+        <Layout style={{height:"100vh"}}>
             <Header style={{ background: '#fff', padding: 0 }}>
               <Trigger>
                 <Icon
@@ -76,7 +76,7 @@ class AppLayout extends Component {
               </main>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
-              ©2017
+              ©2018
             </Footer>
           </Layout>
         </Layout>
