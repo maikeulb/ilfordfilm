@@ -26,6 +26,7 @@ const controls = [{
 ];
 
 const Container = styled.div `
+  padding-top: 10px;
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -41,19 +42,15 @@ const OrderButton = styled.div `
 `;
 
 const Controls = (props) => (
-  <div>
-    <br>
-    </br>
+    <Container>
     <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
     {controls.map(ctrl => (
-    <Container>
       <Control 
         key={ctrl.label} 
         label={ctrl.label}
         added={() => props.filmAdded(ctrl.type)}
         removed={() => props.filmRemoved(ctrl.type)}
         disabled={props.disabled[ctrl.type]} />
-    </Container>
   ))}
 
   <OrderButton>
@@ -64,7 +61,7 @@ const Controls = (props) => (
     </Button>
   </OrderButton>
 
-  </div>
+    </Container>
 );
 
 export default Controls;
