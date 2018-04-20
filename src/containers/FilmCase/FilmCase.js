@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 
 import Aux from '../../hoc/Aux';
+import withErrorHandler from '../../hoc/withErrorHandler';
 import Film from '../../components/Film/Film';
 import Controls from '../../components/Film/Controls/Controls';
 import OrderSummary from '../../components/Film/OrderSummary/OrderSummary';
@@ -193,4 +194,4 @@ class FilmCase extends Component {
   }
 }
 
-export default FilmCase;
+export default withErrorHandler( FilmCase, axios );
