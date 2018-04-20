@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import Aux from './Aux';
 import { Layout, Menu, Icon } from 'antd';
@@ -38,7 +39,6 @@ class AppLayout extends Component {
     return (
       <Aux>
         <Layout>
-
           <Sider
             trigger={null}
             collapsedWidth="0"
@@ -51,14 +51,9 @@ class AppLayout extends Component {
               ILFORD FILM
             </Logo>
             <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-              <Menu.Item key="1">
-                <Icon type="user" />
-                <span>nav 1</span>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <span>nav 2</span>
-              </Menu.Item>
+              <Menu.Item key="1"><Link to='/'><span>Films</span></Link></Menu.Item>
+              <Menu.Item key="2"><Link to='/checkout'><span>Checkout</span></Link></Menu.Item>
+              <Menu.Item key="3"><Link to='/orders'><span>Orders</span></Link></Menu.Item>
             </Menu>
           </Sider>
 
