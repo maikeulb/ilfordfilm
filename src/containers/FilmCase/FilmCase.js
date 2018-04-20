@@ -7,11 +7,11 @@ import withErrorHandler from '../../hoc/withErrorHandler';
 import Film from '../../components/Film/Film';
 import Controls from '../../components/Film/Controls/Controls';
 import OrderSummary from '../../components/Film/OrderSummary/OrderSummary';
+import axios from '../../axios-orders';
 import {
   Modal,
   Spin
 } from 'antd';
-import axios from '../../axios-orders';
 
 const FILM_PRICES = {
   panf: 4.5,
@@ -21,10 +21,6 @@ const FILM_PRICES = {
 };
 
 class FilmCase extends Component {
-  // constructor(props) {
-  //     super(props);
-  //     this.state = {...}
-  // }
   state = {
     films: null,
     totalPrice: 0,
@@ -110,37 +106,17 @@ class FilmCase extends Component {
   }
 
   purchaseContinueHandler = () => {
-    this.setState({
-      loading: true
-    });
-    const order = {
-      films: this.state.films,
-      price: this.state.totalPrice,
-      customer: {
-        name: 'Mike Barnes',
-        address: {
-          street: '123 Main street',
-          zipCode: '11011',
-          country: 'USA'
-        },
-        email: 'demo@example.com'
-      },
-      deliveryMethod: 'express'
+    const queryParams = [];
+    for (let i in this.state.ingredients) {
+        queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
     }
-    axios.post('/orders.json', order)
-      .then(response => {
-        this.setState({
-          loading: false,
-          purchasing: false
-        });
-      })
-      .catch(error => {
-        this.setState({
-          loading: false,
-          purchasing: false
-        });
-      });
+    const queryString = queryParams.join('&');
+    this.props.history.push({
+        pathname: '/checkout',
+        search: '?' + queryString
+    });
   }
+
 
   render() {
     const disabledInfo = {
@@ -152,7 +128,6 @@ class FilmCase extends Component {
     let orderSummary = null;
     let film = this.state.error ? <p>Films can't be loaded!</p> :
       <Spin />;
-
 
     if (this.state.films) {
       film = (

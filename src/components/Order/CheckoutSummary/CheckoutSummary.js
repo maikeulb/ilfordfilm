@@ -19,8 +19,10 @@ const checkoutSummary = (props) => {
         <div style={{width: '100%', margin: 'auto'}}>
            <Film films={props.films}/>
         </div>
-        <Button type="primary">CANCEL</Button>
-        <Button type="primary">CONTINUE</Button>
+        <Button type="primary"
+                onClick={props.checkoutCancelled}>CANCEL</Button>
+        <Button type="primary"
+                onClick={props.checkoutContinued}>CONTINUE</Button>
       </Container>
   );
 }
