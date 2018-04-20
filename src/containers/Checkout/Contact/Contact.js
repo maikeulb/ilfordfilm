@@ -40,7 +40,7 @@ class Contact extends Component {
       loading: true
     });
     const order = {
-      ingredients: this.props.ingredients,
+      films: this.props.films,
       price: this.props.price,
       customer: {
         name: 'Mike Barnes',
@@ -74,7 +74,7 @@ class Contact extends Component {
               <InputContainer><input type="email" name="email" placeholder="Your Mail" /></InputContainer>
               <InputContainer><input type="text" name="street" placeholder="Street" /></InputContainer>
               <InputContainer><input type="text" name="postal" placeholder="Postal Code" /></InputContainer>
-              <InputContainer><Button type="primary" onClic={this.orderHandler}>ORDER</Button></InputContainer>
+              <InputContainer><Button type="primary" onClick={this.orderHandler}>ORDER</Button></InputContainer>
             </form>
     );
     if (this.state.loading) {

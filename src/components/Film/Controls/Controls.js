@@ -2,17 +2,30 @@ import React from 'react';
 
 import Control from './Control/Control';
 import styled from 'styled-components';
-import { Button } from 'antd';
+import {
+  Button
+} from 'antd';
 // import NumberFormat from 'react-number-format';
 
-const controls = [
-  { label: 'Panf', type: 'panf' },
-  { label: 'Delta100', type: 'delta100' },
-  { label: 'Hp5', type: 'hp5' },
-  { label: 'Delta3200', type: 'delta3200' },
+const controls = [{
+    label: 'Panf',
+    type: 'panf'
+  },
+  {
+    label: 'Delta100',
+    type: 'delta100'
+  },
+  {
+    label: 'Hp5',
+    type: 'hp5'
+  },
+  {
+    label: 'Delta3200',
+    type: 'delta3200'
+  },
 ];
 
-const Container = styled.div`
+const Container = styled.div `
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -20,7 +33,7 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const OrderButton = styled.div`
+const OrderButton = styled.div `
   cursor: pointer;
   font-family: inherit;
   font-size: 1.2em;
@@ -44,11 +57,11 @@ const Controls = (props) => (
   ))}
 
   <OrderButton>
-  <Button type="primary"
-    disabled={!props.purchasable}
-    onClick={props.ordered}>
-    ORDER 
-  </Button>
+    <Button type="primary"
+      disabled={!props.purchasable}
+      onClick={props.ordered}>
+      ORDER 
+    </Button>
   </OrderButton>
 
   </div>

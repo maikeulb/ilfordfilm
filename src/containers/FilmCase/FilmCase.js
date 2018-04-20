@@ -107,13 +107,15 @@ class FilmCase extends Component {
 
   purchaseContinueHandler = () => {
     const queryParams = [];
-    for (let i in this.state.ingredients) {
-        queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+    for (let i in this.state.films) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this
+        .state.films[i]));
     }
+    queryParams.push('price=' + this.state.totalPrice);
     const queryString = queryParams.join('&');
     this.props.history.push({
-        pathname: '/checkout',
-        search: '?' + queryString
+      pathname: '/checkout',
+      search: '?' + queryString
     });
   }
 
@@ -148,8 +150,7 @@ class FilmCase extends Component {
               films={this.state.films}
               price={this.state.totalPrice}
               purchaseCancelled={this.purchaseCancelHandler}
-              purchaseContinued={this.purchaseContinueHandler}/>
-
+              purchaseContinued={this.purchaseContinueHandler}/>;
     }
     if (this.state.loading) {
       orderSummary = <Spin />;
@@ -169,4 +170,4 @@ class FilmCase extends Component {
   }
 }
 
-export default withErrorHandler( FilmCase, axios );
+export default withErrorHandler(FilmCase, axios);

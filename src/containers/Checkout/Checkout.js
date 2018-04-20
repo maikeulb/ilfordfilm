@@ -10,23 +10,24 @@ import Contact from './Contact/Contact';
 
 class Checkout extends Component {
   state = {
-    films: {
-      panf: 1,
-      delta100: 1,
-      hp5: 1,
-      delta3200: 1
-    }
+    films: null,
+    price: 0
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const query = new URLSearchParams(this.props.location.search);
-    const ingredients = {};
+    const films = {};
+    let price = 0;
     for (let param of query.entries()) {
-      // ['salad', '1']
-      ingredients[param[0]] = +param[1];
+      if (param[0] === 'price') {
+        price = param[1];
+      } else {
+        films[param[0]] = +param[1];
+      }
     }
     this.setState({
-      ingredients: ingredients
+      films: films,
+      totalPrice: price
     });
   }
 
