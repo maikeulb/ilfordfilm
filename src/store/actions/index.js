@@ -1,10 +1,10 @@
 export {
-    addFilm,
-    removeFilm,
-    initFilms
+  addFilm,
+  removeFilm,
+  initFilms
 } from './filmCase';
 export {
-    purchaseFilmCase,
-    purchaseInit,
-    fetchOrders
+  purchaseFilmCase,
+  purchaseInit,
+  fetchOrders
 } from './order';

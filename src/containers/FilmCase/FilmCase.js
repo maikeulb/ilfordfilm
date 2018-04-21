@@ -96,9 +96,6 @@ class FilmCase extends Component {
               purchaseContinued={this.purchaseContinueHandler}/>;
     }
 
-    // if (this.state.loading) {
-      // orderSummary = <Spin />;
-    // }
     return (
       <Aux>
           <Modal 

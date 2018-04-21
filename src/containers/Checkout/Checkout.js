@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-
+import { Route, Redirect } from 'react-router-dom';
 import axios from '../../axios-orders';
+import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 
+import withErrorHandler from '../../hoc/withErrorHandler';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
 import styled from 'styled-components';
@@ -14,7 +16,7 @@ const Container = styled.div `
 
 const FormItem = Form.Item;
 
-const CollectionCreateForm = Form.create()(
+const CreateForm = Form.create()(
   class extends React.Component {
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
@@ -68,7 +70,6 @@ const CollectionCreateForm = Form.create()(
 
 
 class Checkout extends Component {
-
   state = {
     name: '',
     address: {
@@ -76,27 +77,12 @@ class Checkout extends Component {
       city: '',
       zipCode: ''
     },
-    loading: false,
     visible: false
   }
-
-  // state = {
-  //   films: null,
-  //   price: 0,
-  //   name: '',
-  //   address: {
-  //     street: '',
-  //     city: '',
-  //     zipCode: ''
-  //   },
-  //   loading: false,
-  //   visible: false
-  // }
 
   showModal = () => {
     this.setState({ 
       visible: true,
-      loading: false,
     });
   }
 
@@ -106,54 +92,23 @@ class Checkout extends Component {
 
   handleCreate = () => {
     const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
+    form.validateFields((err, formData) => {
       if (err) {
         return;
       }
-    console.log(values)
     this.setState({
-      loading: true,
       visible: true
     });
     const order = {
       films: this.props.flms,
       price: this.props.price,
-      orderData: values
+      orderData: formData
     }
-    axios.post('/orders.json', order)
-      .then(response => {
-        this.setState({
-          loading: false
-        });
-        this.props.history.push('/');
-      })
-      .catch(error => {
-        this.setState({
-          loading: false
-        });
-      });
+    this.props.onOrderFilmCase(order);
     form.resetFields();
     this.setState({ visible: true });
       });
     }
-
-
-  // componentWillMount() {
-  //   const query = new URLSearchParams(this.props.location.search);
-  //   const films = {};
-  //   let price = 0;
-  //   for (let param of query.entries()) {
-  //     if (param[0] === 'price') {
-  //       price = param[1];
-  //     } else {
-  //       films[param[0]] = +param[1];
-  //     }
-  //   }
-  //   this.setState({
-  //     films: films,
-  //     totalPrice: price
-  //   });
-  // }
 
   saveFormRef = (formRef) => {
     this.formRef = formRef;
@@ -165,34 +120,46 @@ class Checkout extends Component {
 
   render() {
     let form = (
-          <CollectionCreateForm
-            wrappedComponentRef={this.saveFormRef}
-            visible={this.state.visible}
-            onCancel={this.handleCancel}
-            onCreate={this.handleCreate}
-          />
+      <CreateForm
+        wrappedComponentRef={this.saveFormRef}
+        visible={this.state.visible}
+        onCancel={this.handleCancel}
+        onCreate={this.handleCreate}
+      />
     );
-    if (this.state.loading) {
+    let summary = <Redirect to="/" />
+    if ( this.props.loading ) {
       form = <Spin />;
     }
-    return (
-      <Container>
-        <CheckoutSummary 
-           films={this.props.flms}
-           checkoutCancelled={this.checkoutCancelledHandler}
-           checkoutContinued={this.showModal}/>
-        {form}
-      </Container>
-    );
+    if ( this.props.films ) {
+      const purchasedRedirect = this.props.purchased ? <Redirect to="/"/> : null;
+      summary = (
+        <Container>
+          {purchasedRedirect}
+          <CheckoutSummary 
+             films={this.props.flms}
+             checkoutCancelled={this.checkoutCancelledHandler}
+             checkoutContinued={this.showModal}/>
+          {form}
+        </Container>
+      );
+    }
+    return summary;
   }
 }
 
-// export default Checkout;
 const mapStateToProps = state => {
     return {
-        flms: state.films,
-        price: state.totalPrice
+        flms: state.filmCase.films,
+        price: state.order.purchase,
+        loading: state.order.loading
     }
 };
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderFilmCase: (orderData) => dispatch(actions.purchaseFilmCase(orderData))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Checkout, axios));
