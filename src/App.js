@@ -1,10 +1,5 @@
-import React, {
-  Component
-} from 'react';
-import {
-  Route,
-  Switch
-} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Layout from './hoc/Layout';
 import FilmCase from './containers/FilmCase/FilmCase';
