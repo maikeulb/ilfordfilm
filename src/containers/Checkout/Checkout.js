@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from '../../axios-orders';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
@@ -106,7 +106,7 @@ class Checkout extends Component {
     }
     this.props.onOrderFilmCase(order);
     form.resetFields();
-    this.setState({ visible: true });
+    this.setState({ visible: false });
       });
     }
 
@@ -131,7 +131,7 @@ class Checkout extends Component {
     if ( this.props.loading ) {
       form = <Spin />;
     }
-    if ( this.props.films ) {
+    if ( this.props.flms ) {
       const purchasedRedirect = this.props.purchased ? <Redirect to="/"/> : null;
       summary = (
         <Container>
@@ -151,7 +151,7 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         flms: state.filmCase.films,
-        price: state.order.purchase,
+        price: state.filmCase.totalPrice,
         loading: state.order.loading
     }
 };

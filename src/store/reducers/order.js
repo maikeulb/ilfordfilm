@@ -8,11 +8,16 @@ const initialState = {
 };
 
 const purchaseInit = ( state, action ) => {
-  return updateObject( state, { purchased: false } );
+  return updateObject( state, 
+    { purchased: false } 
+  );
 };
 
 const purchaseFilmCaseStart = ( state, action ) => {
-  return updateObject( state, { loading: false } );
+  return updateObject( state, 
+    { loading: false
+    } 
+  );
 };
 
 const purchaseFilmCaseSuccess = ( state, action ) => {
