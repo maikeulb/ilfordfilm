@@ -48,16 +48,16 @@ class Layout extends Component {
             onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
             collapsed={this.state.collapsed}>
             <Logo>
-              ILFORD FILM
+              <Link style={{ textDecoration: 'none', color: 'black' }} to='/'><span>ILFORD FILM</span></Link>
             </Logo>
-            <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-              <Menu.Item key="1"><Link to='/'><span>Films</span></Link></Menu.Item>
+            <Menu theme="light" mode="inline" >
+              <Menu.Item key="1"><Link to='/films'><span>Films</span></Link></Menu.Item>
               <Menu.Item key="2"><Link to='/checkout'><span>Checkout</span></Link></Menu.Item>
               <Menu.Item key="3"><Link to='/orders'><span>Orders</span></Link></Menu.Item>
             </Menu>
           </Sider>
 
-        <AntLayout style={{height:"100vh"}}>
+        <AntLayout style={{ height:"100vh" }}>
             <Header style={{ background: '#fff', padding: 0 }}>
               <Trigger>
                 <Icon

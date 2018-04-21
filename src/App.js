@@ -10,6 +10,7 @@ import Layout from './hoc/Layout';
 import FilmCase from './containers/FilmCase/FilmCase';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
+import Home from './containers/Home/Home';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +21,8 @@ class App extends Component {
           <Switch>
             <Route path="/checkout" component={Checkout} />
             <Route path="/orders" component={Orders} />
-            <Route path="/" exact component={FilmCase} />
+            <Route path="/films" exact component={FilmCase} />
+            <Route path="/" exact component={Home} />
           </Switch>
         </Layout>
       </div>
