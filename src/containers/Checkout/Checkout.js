@@ -138,6 +138,7 @@ class Checkout extends Component {
           {purchasedRedirect}
           <CheckoutSummary 
              films={this.props.flms}
+             price={this.props.price}
              checkoutCancelled={this.checkoutCancelledHandler}
              checkoutContinued={this.showModal}/>
           {form}

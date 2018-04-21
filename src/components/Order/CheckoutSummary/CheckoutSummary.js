@@ -27,11 +27,12 @@ const ButtonContainer = styled.div `
 const checkoutSummary = (props) => {
   return (
     <Container>
-      <h1>Thank you for the order</h1>
+      <h3>Shopping Cart</h3>
         <Film films={props.films}/>
+        <p><strong>Total Price: {props.price.toFixed( 2 )}</strong></p>
       <ButtonContainer>
         <Button type="primary"
-                onClick={props.checkoutContinued}>CONTINUE</Button>
+                onClick={props.checkoutContinued}>CHECKOUT</Button>
         <Button type="danger"
                 onClick={props.checkoutCancelled}>CANCEL</Button>
       </ButtonContainer>

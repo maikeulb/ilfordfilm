@@ -18,13 +18,6 @@ class FilmCase extends Component {
     purchasing: false,
   }
 
-  // state = {
-  //   purchasable: false,
-  //   purchasing: false,
-  //   loading: false,
-  // }
-
-
   componentDidMount() {
     this.props.onInitFilms();
   }
@@ -62,10 +55,6 @@ class FilmCase extends Component {
     const disabledInfo = {
       ...this.props.flms
     };
-
-    // const disabledInfo = {
-    //   ...this.state.flms
-    // };
 
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0
