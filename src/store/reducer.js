@@ -7,7 +7,7 @@ const initialState = {
         hp5: 0,
         delta3200: 0
     },
-    totalPrice: 4
+    totalPrice: 0
 };
 
 const FILM_PRICES = {

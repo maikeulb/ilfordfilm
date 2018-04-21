@@ -1,8 +1,8 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 
 import axios from '../../axios-orders';
+import { connect } from 'react-redux';
+
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
 import styled from 'styled-components';
@@ -19,6 +19,7 @@ const CollectionCreateForm = Form.create()(
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
       const { getFieldDecorator } = form;
+
       return (
         <Modal
           visible={visible}
@@ -69,8 +70,6 @@ const CollectionCreateForm = Form.create()(
 class Checkout extends Component {
 
   state = {
-    films: null,
-    price: 0,
     name: '',
     address: {
       street: '',
@@ -80,6 +79,19 @@ class Checkout extends Component {
     loading: false,
     visible: false
   }
+
+  // state = {
+  //   films: null,
+  //   price: 0,
+  //   name: '',
+  //   address: {
+  //     street: '',
+  //     city: '',
+  //     zipCode: ''
+  //   },
+  //   loading: false,
+  //   visible: false
+  // }
 
   showModal = () => {
     this.setState({ 
@@ -104,8 +116,8 @@ class Checkout extends Component {
       visible: true
     });
     const order = {
-      films: this.state.films,
-      price: this.state.totalPrice,
+      films: this.props.flms,
+      price: this.props.price,
       orderData: values
     }
     axios.post('/orders.json', order)
@@ -126,22 +138,22 @@ class Checkout extends Component {
     }
 
 
-  componentWillMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const films = {};
-    let price = 0;
-    for (let param of query.entries()) {
-      if (param[0] === 'price') {
-        price = param[1];
-      } else {
-        films[param[0]] = +param[1];
-      }
-    }
-    this.setState({
-      films: films,
-      totalPrice: price
-    });
-  }
+  // componentWillMount() {
+  //   const query = new URLSearchParams(this.props.location.search);
+  //   const films = {};
+  //   let price = 0;
+  //   for (let param of query.entries()) {
+  //     if (param[0] === 'price') {
+  //       price = param[1];
+  //     } else {
+  //       films[param[0]] = +param[1];
+  //     }
+  //   }
+  //   this.setState({
+  //     films: films,
+  //     totalPrice: price
+  //   });
+  // }
 
   saveFormRef = (formRef) => {
     this.formRef = formRef;
@@ -166,7 +178,7 @@ class Checkout extends Component {
     return (
       <Container>
         <CheckoutSummary 
-           films={this.state.films}
+           films={this.props.flms}
            checkoutCancelled={this.checkoutCancelledHandler}
            checkoutContinued={this.showModal}/>
         {form}
@@ -175,4 +187,12 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout;
+// export default Checkout;
+const mapStateToProps = state => {
+    return {
+        flms: state.films,
+        price: state.totalPrice
+    }
+};
+
+export default connect(mapStateToProps)(Checkout);
