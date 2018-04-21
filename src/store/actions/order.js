@@ -27,7 +27,6 @@ export const purchaseFilmCase = ( orderData ) => {
     dispatch( purchaseFilmCaseStart() );
     axios.post( '/orders.json', orderData )
       .then( response => {
-        console.log( response.data );
         dispatch( purchaseFilmCaseSuccess( response.data.name, orderData ) );
       } )
       .catch( error => {

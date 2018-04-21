@@ -45,7 +45,7 @@ class Layout extends Component {
             breakpoint="md"
             width="140"
             collapsible
-            onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+            onCollapse={(collapsed, type) => { }}
             collapsed={this.state.collapsed}>
             <Logo>
               <Link style={{ textDecoration: 'none', color: 'black' }} to='/'><span>ILFORD FILM</span></Link>
