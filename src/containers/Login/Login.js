@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
 import { app, googleProvider } from '../../firebase'
+import { startLogin } from './../actions/auth';
+import * as actions from '../../store/actions/index';
 
 const loginStyles = {
   width: "90%",
@@ -26,6 +29,7 @@ class Login extends Component {
         if (error) {
         } else {
           console.log('logged in')
+          this.props.onAuth()
           this.setState({ redirect: true })
         }
       })
@@ -47,4 +51,20 @@ class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  startLogin: () => dispatch(startLogin())
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: ( ) => dispatch( actions.auth() )
+  };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( Login );
