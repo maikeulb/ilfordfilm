@@ -25,7 +25,7 @@ class Login extends Component {
       .then((user, error) => {
         if (error) {
         } else {
-          alert('signed in')
+          console.log('logged in')
           this.setState({ redirect: true })
         }
       })

@@ -7,6 +7,7 @@ import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
+import Logout from './containers/Logout/Logout';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +19,8 @@ class App extends Component {
             <Route path="/checkout" component={Checkout} />
             <Route path="/orders" component={Orders} />
             <Route path="/films" exact component={FilmCase} />
-            <Route path="/Login" exact component={Login} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/logout" exact component={Logout} />
             <Route path="/" exact component={Home} />
           </Switch>
         </Layout>
