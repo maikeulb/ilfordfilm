@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-// import { app } from '../../firebase'
 import { Spin } from 'antd';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 class Logout extends Component {
-  constructor() {
-    super()
-    this.state = {
-      redirect: false
-    }
-  }
+    // redirect: false
+  // }
 
   componentWillMount() {
-    // app.auth().signOut().then((user) => {
-      // this.setState({ redirect: true })
-    // })
+    this.props.onAuth();
+    // this.setState({ redirect: true })
   }
 
   render() {
-    if (this.state.redirect === true) {
+
+    if (this.props.redirect) {
       return <Redirect to="/" />
     }
 
@@ -31,4 +28,16 @@ class Logout extends Component {
   }
 }
 
-export default Logout
+const mapStateToProps = state => {
+  return {
+    redirect: state.auth.redirect,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: ( ) => dispatch( actions.startLogout() )
+  };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( Logout );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
-// import { i, googleProvider } from '../../firebase'
 import * as actions from '../../store/actions/index';
 
 const loginStyles = {
@@ -46,7 +45,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: ( ) => dispatch( actions.auth() )
+    onAuth: ( ) => dispatch( actions.startLogin() )
   };
 };
 
