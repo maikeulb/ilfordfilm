@@ -102,7 +102,8 @@ class Checkout extends Component {
     const order = {
       films: this.props.flms,
       price: this.props.price,
-      orderData: formData
+      orderData: formData,
+      userId: this.props.userId
     }
     this.props.onOrderFilmCase(order);
     form.resetFields();
@@ -154,7 +155,8 @@ const mapStateToProps = state => {
         flms: state.filmCase.films,
         price: state.filmCase.totalPrice,
         purchased: state.order.purchased,
-        loading: state.order.loading
+        loading: state.order.loading,
+        userId: state.auth.user.uid
     }
 };
 
