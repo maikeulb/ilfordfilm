@@ -127,11 +127,11 @@ class Checkout extends Component {
         onCreate={this.handleCreate}
       />
     );
-    let summary = <Redirect to="/" />
     if ( this.props.loading ) {
       form = <Spin />;
     }
-    if ( this.props.flms ) {
+    let summary = <Redirect to="/" />
+    if ( this.props.price ) {
       const purchasedRedirect = this.props.purchased ? <Redirect to="/"/> : null;
       summary = (
         <Container>
@@ -153,6 +153,7 @@ const mapStateToProps = state => {
     return {
         flms: state.filmCase.films,
         price: state.filmCase.totalPrice,
+        purchased: state.order.purchased,
         loading: state.order.loading
     }
 };

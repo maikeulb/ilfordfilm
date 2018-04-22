@@ -52,7 +52,6 @@ class Layout extends Component {
             </Logo>
             <Menu theme="light" mode="inline" >
               <Menu.Item key="1"><Link to='/films'><span>Films</span></Link></Menu.Item>
-              <Menu.Item key="2"><Link to='/checkout'><span>Checkout</span></Link></Menu.Item>
               <Menu.Item key="3"><Link to='/orders'><span>Orders</span></Link></Menu.Item>
             </Menu>
           </Sider>
