@@ -23,7 +23,6 @@ class OrderSummary extends Component {
           {filmSummary}
         </ul>
         <p style={{paddingTop:'10px'}}><strong>Total Price: {this.props.price.toFixed( 2 )}</strong></p>
-        <p>Continue to Checkout?</p>
       </Aux>
     );
   }
