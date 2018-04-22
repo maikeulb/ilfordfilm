@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Aux from './Aux';
 import { Layout as AntLayout, Menu, Icon } from 'antd';
@@ -36,6 +37,12 @@ class Layout extends Component {
   }
 
   render () {
+    const auth = this.props.isAuthenticated ? 
+              (<Link to='/logout'><span>Logout</span></Link>):
+              (<Link to='/login'><span>Login</span></Link>)
+    const orders = this.props.isAuthenticated ? 
+              (<Menu.Item key="2"><Link to='/orders'><span>Orders</span></Link></Menu.Item>):
+              ("")
     return (
       <Aux>
         <AntLayout>
@@ -52,7 +59,8 @@ class Layout extends Component {
             </Logo>
             <Menu theme="light" mode="inline" >
               <Menu.Item key="1"><Link to='/films'><span>Films</span></Link></Menu.Item>
-              <Menu.Item key="3"><Link to='/orders'><span>Orders</span></Link></Menu.Item>
+              { orders }
+              <Menu.Item key="3">{ auth }</Menu.Item>
             </Menu>
           </Sider>
 
@@ -79,4 +87,11 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+// export default Layout;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.user !== null
+    };
+};
+
+export default connect( mapStateToProps )( Layout );
