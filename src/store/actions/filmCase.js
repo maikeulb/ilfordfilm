@@ -30,7 +30,7 @@ export const fetchFilmsFailed = () => {
 
 export const initFilms = () => {
   return dispatch => {
-    axios.get( 'https://ilfordfilm-61890.firebaseio.com/films.json' )
+    axios.get( 'https://ilfordfilms.firebaseio.com/films.json' )
       .then( response => {
          dispatch(setFilms(response.data));
       } )
