@@ -13,24 +13,28 @@ const loginStyles = {
 }
 
 class Login extends Component {
-  state = {
-    redirect: false
+
+  componentDidMount() {
+      if (!this.props.preparingFilmCase && this.props.authRedirectPath !== '/') {
+          this.props.onSetAuthRedirectPath();
+      }
   }
 
   authWithGoogle() {
     this.props.onAuth();
-    this.setState({ redirect: true });
   }
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
 
-    if (this.state.redirect === true) {
-      return <Redirect to={from} />
+    let authRedirect = null;
+    if (this.props.isAuthenticated) {
+        authRedirect = <Redirect to={this.props.authRedirectPath}/>
     }
 
     return (
       <div style={loginStyles}>
+        {authRedirect}
         <button style={{width: "100%"}} className="pt-button pt-intent-primary" onClick={() => { this.authWithGoogle() }}>Log In with Google</button>
         <hr style={{marginTop: "10px", marginBottom: "10px"}}/>
       </div>
@@ -40,12 +44,16 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
+    isAuthenticated: state.auth.user !== null,
+    authRedirectPath: state.auth.authRedirectPath,
+    preparingFilmCase: state.filmCase.preparing,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: ( ) => dispatch( actions.startLogin() )
+    onAuth: ( ) => dispatch( actions.startLogin() ),
+    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   };
 };
 

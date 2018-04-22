@@ -118,6 +118,12 @@ class Auth extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        preparingFilmCase: state.filmCase.preparing,
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password) => dispatch(actions.auth(email, password))

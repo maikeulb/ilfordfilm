@@ -19,7 +19,8 @@ const addFilm = ( state, action ) => {
   const updatedFilms = updateObject( state.films, updatedFilm );
   const updatedState = {
     films: updatedFilms,
-    totalPrice: state.totalPrice + FILM_PRICES[action.filmName]
+    totalPrice: state.totalPrice + FILM_PRICES[action.filmName],
+    preparing: true
   }
   return updateObject( state, updatedState );
 };
@@ -29,7 +30,8 @@ const removeFilm = (state, action) => {
   const updatedIngs = updateObject( state.films, updatedIng );
   const updatedSt = {
     films: updatedIngs,
-    totalPrice: state.totalPrice + FILM_PRICES[action.filmName]
+    totalPrice: state.totalPrice + FILM_PRICES[action.filmName],
+    preparing: true
   }
   return updateObject( state, updatedSt );
 };
@@ -43,7 +45,8 @@ const setFilms = (state, action) => {
       delta3200: action.films.delta3200
     },
     totalPrice: 0,
-    error: false
+    error: false,
+    preparing: false
   } );
 };
 

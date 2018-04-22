@@ -53,8 +53,7 @@ const Controls = (props) => (
     <OrderButton>
       <Button type="primary"
         disabled={!props.purchasable}
-        onClick={props.ordered}>
-        ORDER 
+        onClick={props.ordered}>{props.isAuth ? 'ORDER NOW' : 'LOGIN TO ORDER'}
       </Button>
     </OrderButton>
 

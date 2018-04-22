@@ -11,5 +11,6 @@ export {
 export {
   startLogin,
   startLogout,
+  setAuthRedirectPath,
   verifyAuth,
 } from './auth';

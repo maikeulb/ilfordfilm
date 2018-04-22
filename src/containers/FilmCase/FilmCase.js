@@ -13,7 +13,6 @@ import * as actions from '../../store/actions/index';
 import { Modal, Spin } from 'antd';
 
 class FilmCase extends Component {
-
   state = {
     purchasing: false,
   }
@@ -34,10 +33,19 @@ class FilmCase extends Component {
   }
 
   purchaseHandler = () => {
-    this.setState({
-      purchasing: true
-    });
+    if (this.props.isAuthenticated) {
+      this.setState( { purchasing: true } );
+    } else {
+      this.props.onSetAuthRedirectPath('/checkout');
+      this.props.history.push('/login');
+    }
   }
+
+  // purchaseHandler = () => {
+  //   this.setState({
+  //     purchasing: true
+  //   });
+  // }
 
   purchaseCancelHandler = () => {
     this.setState({
@@ -73,6 +81,7 @@ class FilmCase extends Component {
               disabled={disabledInfo}
               purchasable={this.updatePurchaseState(this.props.flms)}
               ordered={this.purchaseHandler}
+              isAuth={this.props.isAuthenticated}
               price={this.props.price} />
         </Aux>
       );
@@ -101,20 +110,22 @@ class FilmCase extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        flms: state.filmCase.films,
-        price: state.filmCase.totalPrice,
-        error: state.filmCase.error
-    };
+  return {
+    flms: state.filmCase.films,
+    price: state.filmCase.totalPrice,
+    error: state.filmCase.error,
+    isAuthenticated: state.auth.user !== null
+  };
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onFilmAdded: (flmName) => dispatch(actions.addFilm(flmName)),
-        onFilmRemoved: (flmName) => dispatch(actions.removeFilm(flmName)),
-        onInitFilms: () => dispatch(actions.initFilms()),
-        onInitPurchase: () => dispatch(actions.purchaseInit())
-    }
+  return {
+    onFilmAdded: (flmName) => dispatch(actions.addFilm(flmName)),
+    onFilmRemoved: (flmName) => dispatch(actions.removeFilm(flmName)),
+    onInitFilms: () => dispatch(actions.initFilms()),
+    onInitPurchase: () => dispatch(actions.purchaseInit()),
+    onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler( FilmCase, axios ));
