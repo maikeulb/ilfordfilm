@@ -1,15 +1,12 @@
+import { firebase, googleProvider } from '../../firebase';
+
 import * as actionTypes from './actionTypes';
 
-export const authStart = () => {
+export const authLogin = (userId) => {
+  console.log(userId)
   return {
-    type: actionTypes.AUTH_START
-  };
-};
-
-export const authSuccess = (authData) => {
-  return {
-    type: actionTypes.AUTH_SUCCESS,
-    authData: authData
+    type: actionTypes.AUTH_START,
+    userId: userId
   };
 };
 
@@ -20,8 +17,21 @@ export const authFail = (error) => {
   };
 };
 
-export const auth = (email, password) => {
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
+};
+
+export const auth = () => {
   return dispatch => {
-    dispatch(authStart());
+    firebase.auth().signInWithPopup(googleProvider)
+      .then(response => {
+          console.log(response);
+          dispatch(authLogin(response.user.uid));
+      })
+      .catch(err => {
+          dispatch(authFail(err.response));
+      });
   };
 };

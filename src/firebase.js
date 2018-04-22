@@ -8,7 +8,7 @@ const config = {
   storageBucket: "ilfordfilms.appspot.com",
 };
 
-const app = firebase.initializeApp(config)
+firebase.initializeApp(config)
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 
-export { app, googleProvider }
+export { firebase, googleProvider }

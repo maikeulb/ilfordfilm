@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { app } from '../../firebase'
+// import { app } from '../../firebase'
 import { Spin } from 'antd';
 
 class Logout extends Component {
@@ -12,9 +12,9 @@ class Logout extends Component {
   }
 
   componentWillMount() {
-    app.auth().signOut().then((user) => {
-      this.setState({ redirect: true })
-    })
+    // app.auth().signOut().then((user) => {
+      // this.setState({ redirect: true })
+    // })
   }
 
   render() {

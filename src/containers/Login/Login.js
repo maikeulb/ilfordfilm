@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { app, googleProvider } from '../../firebase'
-import { startLogin } from './../actions/auth';
+// import { i, googleProvider } from '../../firebase'
 import * as actions from '../../store/actions/index';
 
 const loginStyles = {
@@ -15,24 +14,13 @@ const loginStyles = {
 }
 
 class Login extends Component {
-  constructor(props) {
-    super(props)
-    this.authWithGoogle = this.authWithGoogle.bind(this)
-    this.state = {
-      redirect: false
-    }
+  state = {
+    redirect: false
   }
 
   authWithGoogle() {
-    app.auth().signInWithPopup(googleProvider)
-      .then((user, error) => {
-        if (error) {
-        } else {
-          console.log('logged in')
-          this.props.onAuth()
-          this.setState({ redirect: true })
-        }
-      })
+    this.props.onAuth();
+    this.setState({ redirect: true });
   }
 
   render() {
@@ -53,13 +41,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.auth.loading,
   };
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  startLogin: () => dispatch(startLogin())
-});
 
 const mapDispatchToProps = dispatch => {
   return {
