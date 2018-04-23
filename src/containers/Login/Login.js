@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
+import GoogleButton from 'react-google-button'
 
 const loginStyles = {
   width: "90%",
   maxWidth: "315px",
   margin: "20px auto",
-  border: "1px solid #ddd",
-  borderRadius: "5px",
   padding: "10px"
 }
 
@@ -34,8 +33,7 @@ class Login extends Component {
     return (
       <div style={loginStyles}>
         {authRedirect}
-        <button style={{width: "100%"}} className="pt-button pt-intent-primary" onClick={() => { this.authWithGoogle() }}>Log In with Google</button>
-        <hr style={{marginTop: "10px", marginBottom: "10px"}}/>
+        <GoogleButton onClick={() => { this.authWithGoogle() }} />
       </div>
     )
   }
