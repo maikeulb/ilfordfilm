@@ -7,7 +7,8 @@ class Home extends Component {
     return (
       <div>
         <img style={{ maxHeight: "70vh", maxWidth: "100%"}} src={banner} alt="ilford" />
-      </div>);
+      </div>
+    );
   }
 }
 
