@@ -88,7 +88,9 @@ class Checkout extends Component {
   }
 
   handleCancel = () => {
-    this.setState({ visible: false });
+    this.setState({ 
+      visible: false 
+    });
   }
 
   handleCreate = () => {

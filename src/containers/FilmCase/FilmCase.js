@@ -89,6 +89,7 @@ class FilmCase extends Component {
 
     return (
       <Aux>
+
           <Modal 
             title = "Your Order"
             visible={this.state.purchasing}
@@ -96,6 +97,7 @@ class FilmCase extends Component {
             onCancel={this.purchaseCancelHandler}>
             {orderSummary}
           </Modal>
+
           {film}
       </Aux>
     );

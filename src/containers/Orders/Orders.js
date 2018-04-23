@@ -16,6 +16,7 @@ class Orders extends Component {
 
   render() {
     let orders = <Spin />;
+
     if ( !this.props.loading ) {
       orders = this.props.orders.map( order => (
         <Order 
