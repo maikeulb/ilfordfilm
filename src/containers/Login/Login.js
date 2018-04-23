@@ -13,7 +13,6 @@ const loginStyles = {
 }
 
 class Login extends Component {
-
   componentDidMount() {
       if (!this.props.preparingFilmCase && this.props.authRedirectPath !== '/') {
           this.props.onSetAuthRedirectPath();
