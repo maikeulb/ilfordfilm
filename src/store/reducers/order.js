@@ -15,8 +15,7 @@ const purchaseInit = ( state, action ) => {
 
 const purchaseFilmCaseStart = ( state, action ) => {
   return updateObject( state, 
-    { loading: false
-    } 
+    { loading: true } 
   );
 };
 
