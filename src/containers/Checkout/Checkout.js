@@ -106,7 +106,7 @@ class Checkout extends Component {
       orderData: formData,
       userId: this.props.userId
     }
-    this.props.onOrderFilmCase(order);
+    this.props.onOrderFilmCase(order, this.props.token);
     form.resetFields();
     this.setState({ visible: false });
       });
@@ -157,13 +157,14 @@ const mapStateToProps = state => {
     price: state.filmCase.totalPrice,
     purchased: state.order.purchased,
     loading: state.order.loading,
-    userId: state.auth.user.uid
+    userId: state.auth.user.uid,
+    token: state.auth.token
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-      onOrderFilmCase: (orderData) => dispatch(actions.purchaseFilmCase(orderData))
+    onOrderFilmCase: (orderData, token) => dispatch(actions.purchaseFilmCase(orderData, token))
   };
 };
 
