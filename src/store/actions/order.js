@@ -22,10 +22,10 @@ export const purchaseFilmCaseStart = () => {
   };
 };
 
-export const purchaseFilmCase = ( orderData ) => {
+export const purchaseFilmCase = ( orderData, token ) => {
   return dispatch => {
     dispatch( purchaseFilmCaseStart() );
-    axios.post( '/orders.json', orderData )
+    axios.post( '/orders.json?auth=' + token, orderData )
       .then( response => {
         dispatch( purchaseFilmCaseSuccess( response.data.name, orderData ) );
       } )
@@ -61,10 +61,10 @@ export const fetchOrdersStart = () => {
   };
 };
 
-export const fetchOrders = (userId) => {
+export const fetchOrders = (userId, token) => {
   return dispatch => {
     dispatch(fetchOrdersStart());
-    const queryParams = '?&orderBy="userId"&equalTo="' + userId + '"';
+    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
     axios.get( '/orders.json' + queryParams )
       .then( res => {
         const fetchedOrders = [];
