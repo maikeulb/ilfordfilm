@@ -18,7 +18,7 @@ const Container = styled.div `
 const FormItem = Form.Item;
 
 const CreateForm = Form.create()(
-  class extends React.Component {
+  class extends Component {
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
       const { getFieldDecorator } = form;
@@ -152,19 +152,19 @@ class Checkout extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        flms: state.filmCase.films,
-        price: state.filmCase.totalPrice,
-        purchased: state.order.purchased,
-        loading: state.order.loading,
-        userId: state.auth.user.uid
-    }
+  return {
+    flms: state.filmCase.films,
+    price: state.filmCase.totalPrice,
+    purchased: state.order.purchased,
+    loading: state.order.loading,
+    userId: state.auth.user.uid
+  }
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onOrderFilmCase: (orderData) => dispatch(actions.purchaseFilmCase(orderData))
-    };
+  return {
+      onOrderFilmCase: (orderData) => dispatch(actions.purchaseFilmCase(orderData))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Checkout, axios));

@@ -53,7 +53,6 @@ class FilmCase extends Component {
   }
 
   render() {
-
     const disabledInfo = {
       ...this.props.flms
     };

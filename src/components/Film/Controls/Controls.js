@@ -56,7 +56,6 @@ const Controls = (props) => (
         onClick={props.ordered}>{props.isAuth ? 'ORDER NOW' : 'LOGIN TO ORDER'}
       </Button>
     </OrderButton>
-
   </Container>
 );
 

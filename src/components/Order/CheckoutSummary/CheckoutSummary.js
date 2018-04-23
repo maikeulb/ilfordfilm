@@ -2,9 +2,7 @@ import React from 'react';
 
 import Film from '../../Film/Film';
 import styled from 'styled-components';
-import {
-  Button
-} from 'antd';
+import { Button } from 'antd';
 
 const Container = styled.div `
   text-align: center;
@@ -15,14 +13,12 @@ const Container = styled.div `
 
 const ButtonContainer = styled.div `
   > button {
-  margin-right: 5px;
+    margin-right: 5px;
   }
   > button + button {
-  margin-left: 5px;
+    margin-left: 5px;
   }
-
 `;
-
 
 const checkoutSummary = (props) => {
   return (

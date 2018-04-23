@@ -24,6 +24,7 @@ class Orders extends Component {
           price={order.price} />
      ) )
     }
+
     return (
       <div>
         {orders}

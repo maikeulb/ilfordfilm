@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import panfImg from '../../../assets/panf.jpg';
 import delta100Img from '../../../assets/delta100.jpg';
@@ -38,9 +37,5 @@ class Films extends Component {
         return films;
     }
 }
-
-Films.propTypes = {
-    type: PropTypes.string.isRequired
-};
 
 export default Films;
