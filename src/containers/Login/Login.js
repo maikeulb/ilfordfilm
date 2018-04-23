@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
+
 import GoogleButton from 'react-google-button'
 
 const loginStyles = {
@@ -23,8 +24,6 @@ class Login extends Component {
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } }
-
     let authRedirect = null;
     if (this.props.isAuthenticated) {
         authRedirect = <Redirect to={this.props.authRedirectPath}/>

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Aux from '../../../hoc/Aux';
 
 class OrderSummary extends Component {
-
   componentWillUpdate() {
     console.log('[OrderSummary] WillUpdate');
   }

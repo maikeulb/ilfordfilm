@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import withErrorHandler from '../../hoc//withErrorHandler';
-import axios from '../../axios-orders';
+
 import Order from '../../components/Order/Order';
+
+import axios from '../../axios-orders';
 import { Spin } from 'antd';
 import * as actions from '../../store/actions/index';
 

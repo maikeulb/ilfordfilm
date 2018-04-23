@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Aux from './Aux';
@@ -87,7 +87,6 @@ class Layout extends Component {
   }
 }
 
-// export default Layout;
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.user !== null

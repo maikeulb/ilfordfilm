@@ -1,11 +1,8 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 
 import Aux from './Aux';
-import {
-  Modal,
-} from 'antd';
+
+import { Modal, } from 'antd';
 
 const withErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {

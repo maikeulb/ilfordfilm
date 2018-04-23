@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 
-class Logout extends Component {
-    // redirect: false
-  // }
+import { Spin } from 'antd';
 
+class Logout extends Component {
   componentWillMount() {
     this.props.onAuth();
-    // this.setState({ redirect: true })
   }
 
   render() {
-
     if (this.props.redirect) {
       return <Redirect to="/" />
     }

@@ -1,5 +1,4 @@
 import { firebase, googleProvider } from '../../firebase';
-
 import * as actionTypes from './actionTypes';
 
 export const authLogin = (user) => {

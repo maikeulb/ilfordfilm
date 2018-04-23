@@ -9,7 +9,6 @@ import Orders from './containers/Orders/Orders';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Logout from './containers/Logout/Logout';
-import * as actions from './store/actions/index';
 import './App.css';
 
 class App extends Component {

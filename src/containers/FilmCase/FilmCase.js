@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 import Aux from '../../hoc/Aux';
 import withErrorHandler from '../../hoc/withErrorHandler';
-import axios from '../../axios-orders';
 
 import Film from '../../components/Film/Film';
 import Controls from '../../components/Film/Controls/Controls';
 import OrderSummary from '../../components/Film/OrderSummary/OrderSummary';
-import * as actions from '../../store/actions/index';
 
+import axios from '../../axios-orders';
 import { Modal, Spin } from 'antd';
 
 class FilmCase extends Component {
@@ -40,12 +40,6 @@ class FilmCase extends Component {
       this.props.history.push('/login');
     }
   }
-
-  // purchaseHandler = () => {
-  //   this.setState({
-  //     purchasing: true
-  //   });
-  // }
 
   purchaseCancelHandler = () => {
     this.setState({

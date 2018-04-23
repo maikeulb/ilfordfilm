@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from '../../axios-orders';
-import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 import withErrorHandler from '../../hoc/withErrorHandler';
+
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
+import axios from '../../axios-orders';
 import styled from 'styled-components';
 import { Form, Modal, Input, InputNumber, Spin } from 'antd';
 
