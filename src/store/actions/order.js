@@ -1,6 +1,12 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-orders';
 
+export const purchaseFilmCaseStart = () => {
+  return {
+    type: actionTypes.PURCHASE_FILMCASE_START
+  };
+};
+
 export const purchaseFilmCaseSuccess = ( id, orderData ) => {
   return {
     type: actionTypes.PURCHASE_FILMCASE_SUCCESS,
@@ -15,12 +21,6 @@ export const purchaseFilmCaseFail = ( error ) => {
     error: error
   };
 }
-
-export const purchaseFilmCaseStart = () => {
-  return {
-    type: actionTypes.PURCHASE_FILMCASE_START
-  };
-};
 
 export const purchaseFilmCase = ( orderData, token ) => {
   return dispatch => {
@@ -41,6 +41,12 @@ export const purchaseInit = () => {
   };
 };
 
+export const fetchOrdersStart = () => {
+  return {
+    type: actionTypes.FETCH_ORDERS_START
+  };
+};
+
 export const fetchOrdersSuccess = ( orders ) => {
   return {
     type: actionTypes.FETCH_ORDERS_SUCCESS,
@@ -52,12 +58,6 @@ export const fetchOrdersFail = ( error ) => {
   return {
     type: actionTypes.FETCH_ORDERS_FAIL,
     error: error
-  };
-};
-
-export const fetchOrdersStart = () => {
-  return {
-    type: actionTypes.FETCH_ORDERS_START
   };
 };
 
