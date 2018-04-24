@@ -26,10 +26,10 @@ const addFilm = ( state, action ) => {
 };
 
 const removeFilm = (state, action) => {
-  const updatedIng = { [action.filmName]: state.films[action.filmName] - 1 }
-  const updatedIngs = updateObject( state.films, updatedIng );
+  const updatedFlm = { [action.filmName]: state.films[action.filmName] - 1 }
+  const updatedFlms = updateObject( state.films, updatedFlm );
   const updatedSt = {
-    films: updatedIngs,
+    films: updatedFlms,
     totalPrice: state.totalPrice + FILM_PRICES[action.filmName],
     preparing: true
   }
