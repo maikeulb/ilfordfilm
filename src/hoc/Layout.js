@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Aux from './Aux';
 import { Layout as AntLayout, Menu, Icon } from 'antd';
 import styled from 'styled-components';
+import logo from '../assets/logo.jpg';
 
 const { Header, Content, Footer, Sider } = AntLayout;
 
@@ -55,7 +56,7 @@ class Layout extends Component {
             onCollapse={(collapsed, type) => { }}
             collapsed={this.state.collapsed}>
             <Logo>
-              <Link style={{ textDecoration: 'none', color: 'black' }} to='/'><span>ILFORD FILM</span></Link>
+              <Link to='/'><span><img style={{ maxWidth: "100px"}} src={logo} alt="zeiss" /></span></Link>
             </Logo>
             <Menu theme="light" mode="inline" >
               <Menu.Item key="1"><Link to='/films'><span>Films</span></Link></Menu.Item>
