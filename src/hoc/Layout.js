@@ -56,7 +56,7 @@ class Layout extends Component {
             onCollapse={(collapsed, type) => { }}
             collapsed={this.state.collapsed}>
             <Logo>
-              <Link to='/'><span><img style={{ maxWidth: "100px"}} src={logo} alt="zeiss" /></span></Link>
+              <Link to='/'><span><img style={{ maxWidth: "100px"}} src={logo} alt="ilford" /></span></Link>
             </Logo>
             <Menu theme="light" mode="inline" >
               <Menu.Item key="1"><Link to='/films'><span>Films</span></Link></Menu.Item>

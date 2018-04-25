@@ -14,9 +14,9 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 
 const rootReducer = combineReducers({
-    filmCase: filmCaseReducer,
-    order: orderReducer,
-    auth: authReducer
+  filmCase: filmCaseReducer,
+  order: orderReducer,
+  auth: authReducer
 });
 
 const store = createStore(

@@ -10,6 +10,14 @@ const Container = styled.div `
   box-sizing: border-box;
 `;
 
+const Span = styled.span `
+  text-transform: capitalize;
+  display: inline-block;
+  margin: 0 8px;
+  border: 1px solid #ccc;
+  padding: 5px;
+`;
+
 const order = (props) => {
   const films = [];
 
@@ -21,22 +29,18 @@ const order = (props) => {
   }
 
   const filmOutput = films.map(ig => {
-    return <span 
-            style={{
-                textTransform: 'capitalize',
-                display: 'inline-block',
-                margin: '0 8px',
-                border: '1px solid #ccc',
-                padding: '5px'
-                }}
-            key={ig.name}>{ig.name} ({ig.amount})</span>;
+    return (
+      <Span 
+        key={ig.name}>{ig.name} ({ig.amount})
+      </Span>
+    )
   });
 
   return (
     <Container>
-            <p>Films: {filmOutput}</p>
-            <p>Price: <strong>USD {Number.parseFloat( props.price ).toFixed( 2 )}</strong></p>
-       </Container>
+      <p>Films: {filmOutput}</p>
+      <p>Price: <strong>USD {Number.parseFloat( props.price ).toFixed( 2 )}</strong></p>
+    </Container>
   );
 };
 

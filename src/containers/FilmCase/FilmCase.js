@@ -67,15 +67,15 @@ class FilmCase extends Component {
     if (this.props.flms) {
       film = (
         <Aux>
-            <Film films={this.props.flms} />
-            <Controls
-              filmAdded={this.props.onFilmAdded}
-              filmRemoved={this.props.onFilmRemoved}
-              disabled={disabledInfo}
-              purchasable={this.updatePurchaseState(this.props.flms)}
-              ordered={this.purchaseHandler}
-              isAuth={this.props.isAuthenticated}
-              price={this.props.price} />
+          <Film films={this.props.flms} />
+          <Controls
+            filmAdded={this.props.onFilmAdded}
+            filmRemoved={this.props.onFilmRemoved}
+            disabled={disabledInfo}
+            purchasable={this.updatePurchaseState(this.props.flms)}
+            ordered={this.purchaseHandler}
+            isAuth={this.props.isAuthenticated}
+            price={this.props.price} />
         </Aux>
       );
 
@@ -89,14 +89,14 @@ class FilmCase extends Component {
 
     return (
       <Aux>
-          <Modal 
-            title = "Your Order"
-            visible={this.state.purchasing}
-            onOk={this.purchaseContinueHandler}
-            onCancel={this.purchaseCancelHandler}>
-            {orderSummary}
-          </Modal>
-          {film}
+        <Modal 
+          title = "Your Order"
+          visible={this.state.purchasing}
+          onOk={this.purchaseContinueHandler}
+          onCancel={this.purchaseCancelHandler}>
+          {orderSummary}
+        </Modal>
+        {film}
       </Aux>
     );
   }
