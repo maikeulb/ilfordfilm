@@ -1,5 +1,3 @@
-simplify folder heirarchy
 make styling consistent
-ilford logo
-login modal
+add animations
 remove cancel from error modal

@@ -9,7 +9,7 @@ import Film from '../../components/Film/Film';
 import Controls from '../../components/Film/Controls/Controls';
 import OrderSummary from '../../components/Film/OrderSummary/OrderSummary';
 
-import axios from '../../axios-orders';
+import axios from '../../axios';
 import { Modal, Spin } from 'antd';
 
 class FilmCase extends Component {
@@ -81,10 +81,10 @@ class FilmCase extends Component {
 
       orderSummary =
         <OrderSummary 
-              films={this.props.flms}
-              price={this.props.price}
-              purchaseCancelled={this.purchaseCancelHandler}
-              purchaseContinued={this.purchaseContinueHandler}/>;
+          films={this.props.flms}
+          price={this.props.price}
+          purchaseCancelled={this.purchaseCancelHandler}
+          purchaseContinued={this.purchaseContinueHandler}/>;
     }
 
     return (

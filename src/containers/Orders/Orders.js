@@ -5,7 +5,7 @@ import withErrorHandler from '../../hoc//withErrorHandler';
 
 import Order from '../../components/Order/Order';
 
-import axios from '../../axios-orders';
+import axios from '../../axios';
 import { Spin } from 'antd';
 import * as actions from '../../store/actions/index';
 

@@ -7,7 +7,7 @@ import withErrorHandler from '../../hoc/withErrorHandler';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
-import axios from '../../axios-orders';
+import axios from '../../axios';
 import styled from 'styled-components';
 import { Form, Modal, Input, InputNumber, Spin } from 'antd';
 
@@ -20,16 +20,16 @@ const FormItem = Form.Item;
 const CreateForm = Form.create()(
   class extends Component {
     render() {
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onSubmit, form } = this.props;
       const { getFieldDecorator } = form;
 
       return (
         <Modal
           visible={visible}
           title="Shipping Address"
-          okText="Create"
+          okText="Submit"
           onCancel={onCancel}
-          onOk={onCreate}
+          onOk={onSubmit}
         >
           <Form layout="vertical">
             <FormItem label="Name">
@@ -93,7 +93,7 @@ class Checkout extends Component {
     });
   }
 
-  handleCreate = () => {
+  handleSubmit = () => {
     const form = this.formRef.props.form;
     form.validateFields((err, formData) => {
       if (err) {
@@ -128,7 +128,7 @@ class Checkout extends Component {
         wrappedComponentRef={this.saveFormRef}
         visible={this.state.visible}
         onCancel={this.handleCancel}
-        onCreate={this.handleCreate}
+        onSubmit={this.handleSubmit}
       />
     );
     if ( this.props.loading ) {
