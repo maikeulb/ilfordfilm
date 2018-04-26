@@ -25,7 +25,7 @@ export const purchaseFilmCaseFail = ( error ) => {
 export const purchaseFilmCase = ( orderData, token ) => {
   return dispatch => {
     dispatch( purchaseFilmCaseStart() );
-    axios.post( '/orders.json?auth=' + token, orderData )
+    axios.post( `/orders.json?auth=${token}`, orderData )
       .then( response => {
         dispatch( purchaseFilmCaseSuccess( response.data.name, orderData ) );
       } )
@@ -64,8 +64,8 @@ export const fetchOrdersFail = ( error ) => {
 export const fetchOrders = (userId, token) => {
   return dispatch => {
     dispatch(fetchOrdersStart());
-    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
-    axios.get( '/orders.json' + queryParams )
+    const queryParams = `?auth='${token}&orderBy="userId"&equalTo="${userId}"`;
+    axios.get( `/orders.json${queryParams}` )
       .then( res => {
         const fetchedOrders = [];
         for ( let key in res.data ) {
