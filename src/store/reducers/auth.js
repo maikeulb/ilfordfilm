@@ -2,10 +2,10 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-  redirect: false,
   error: null,
   user: null,
   token: null,
+  redirect: false,
   auth: true,
   authRedirectPath: '/'
 };
