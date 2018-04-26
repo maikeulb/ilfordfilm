@@ -14,18 +14,17 @@ Technology
 
 Infrastructure
 ----------
-* Firebase
+* Firebase Realtime Database
+* Firebase Authentication
+* Firebase Hosting
 
 Screenshots
 ---
 ### Home 
 ![home](/screenshots/home.png?raw=true "Home")
 ### Films 
-Display films per category (or all categories).
 ![films](/screenshots/films.png?raw=true "Films")
 ### Checkout 
-Checkout shopping cart.
 ![checkout](/screenshots/checkout.png?raw=true "Checkout")
 ### Orders 
-Review order history.
 ![orders](/screenshots/orders.png?raw=true "Orders")
