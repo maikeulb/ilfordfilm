@@ -29,7 +29,7 @@ const order = (props) => {
 
   const filmOutput = films.map(flm => {
     return (
-      <List size="small">
+      <List key={flm.name} size="small">
         <Span key={flm.name}>{flm.name} x {flm.amount}</Span>
       </List>
     )
@@ -37,7 +37,7 @@ const order = (props) => {
 
   return (
     <Container>
-      <p>{filmOutput}</p>
+      {filmOutput}
       <p><b>Price</b>: USD {Number.parseFloat( props.price ).toFixed( 2 )}</p>
     </Container>
   );
