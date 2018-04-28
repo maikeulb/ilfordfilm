@@ -13,7 +13,6 @@ const Trigger = styled.div`
   font-size: 18px;
   line-height: 64px;
   padding: 0 24px;
-  cursor: pointer;
 }
 `;
 
@@ -22,11 +21,9 @@ const Logo = styled.div`
   background: rgba(255,255,255,.2);
   margin: 16px;
   padding: 0 10px;
-  font-weight: bold;
 `;
 
 class Layout extends Component {
-
   state = {
     collapsed: true,
   }
@@ -58,11 +55,13 @@ class Layout extends Component {
             <Logo>
               <Link to='/'><span><img style={{ maxWidth: "100px"}} src={logo} alt="ilford" /></span></Link>
             </Logo>
+
             <Menu theme="light" mode="inline" >
               <Menu.Item key="1"><Link to='/films'><span>Films</span></Link></Menu.Item>
               { orders }
               <Menu.Item key="3">{ auth }</Menu.Item>
             </Menu>
+
           </Sider>
 
         <AntLayout style={{ height:"100vh" }}>
@@ -70,7 +69,9 @@ class Layout extends Component {
               <Trigger>
                 <Icon
                   type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                  onClick={this.toggle}/>
+                  onClick={this.toggle}
+                  style={{cursor: 'pointer'}}
+                />
                 </Trigger>
             </Header>
             <Content style={{ textAlign: 'center' }}>
