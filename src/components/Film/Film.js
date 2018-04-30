@@ -18,13 +18,15 @@ const Container = styled.div `
 `;
 
 const film = (props) => {
+  const style = { display:'inline-block' };
+
   let transformedFilms = Object.keys(props.films)
     .map(filmKey => {
       return [...Array(props.films[filmKey])]
         .map((_, i) => {
           return (
-            <div style={{display:'inline-block'}}>
-              <Films key={filmKey + i} type={filmKey} />
+            <div style={ style }>
+              <Films key={ filmKey + i } type={ filmKey } />
             </div>
           );
         });
@@ -32,12 +34,14 @@ const film = (props) => {
     .reduce((arr, el) => {
       return arr.concat(el)
     }, []);
+
   if (transformedFilms.length === 0) {
     transformedFilms = <p>Please add film.</p>;
   }
+
   return (
     <Container>
-      {transformedFilms }
+      { transformedFilms }
     </Container>
   );
 };

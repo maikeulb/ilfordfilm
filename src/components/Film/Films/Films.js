@@ -12,22 +12,22 @@ class Films extends Component {
       switch ( this.props.type ) {
         case ( 'panf' ):
           films = <div> 
-                    <img src = {panfImg} alt ="panf" />
+                    <img src = { panfImg } alt ="panf" />
                   </div>;
           break;
         case ( 'delta100' ):
           films = <div> 
-                    <img src = {delta100Img} alt ="delta100" />
+                    <img src = { delta100Img } alt ="delta100" />
                   </div>;
           break;
         case ( 'hp5' ):
           films = <div> 
-                    <img src = {hp5Img} alt ="hp5" />
+                    <img src = { hp5Img } alt ="hp5" />
                   </div>;
           break;
         case ( 'delta3200' ):
           films = <div>
-                    <img src = {delta3200Img} alt ="delta3200" />
+                    <img src = { delta3200Img } alt ="delta3200" />
                   </div>;
           break;
         default:

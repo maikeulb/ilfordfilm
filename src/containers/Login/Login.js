@@ -5,7 +5,7 @@ import * as actions from '../../store/actions/index';
 
 import GoogleButton from 'react-google-button'
 
-const loginStyles = {
+const style = {
   width: "90%",
   maxWidth: "315px",
   margin: "20px auto",
@@ -30,7 +30,7 @@ class Login extends Component {
     }
 
     return (
-      <div style={loginStyles}>
+      <div style={style}>
         {authRedirect}
         <GoogleButton onClick={() => { this.authWithGoogle() }} />
       </div>

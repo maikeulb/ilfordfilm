@@ -1,32 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
 import Aux from '../../../hoc/Aux';
 
-class OrderSummary extends Component {
-  render() {
-    const filmSummary = Object.keys( this.props.films)
-      .map( filmKey => {
-        return (
-          <li style={
-            {listStyleType: 'none'}
-          } key={filmKey}>
-          <span style={{
-            textTransform: 'capitalize' }
-          }>{filmKey}</span>: {this.props.films[filmKey]}
-          </li> );
-        } );
+const Li = styled.li `
+  list-style-type: 'none';
+`;
 
-    return (
-      <Aux>
-        <ul style={{padding:'0', margin:'0'}}>
-          {filmSummary}
-        </ul>
-        <p style={
-          {paddingTop:'10px'}
-        }><strong>Total Price: {this.props.price.toFixed( 2 )}</strong></p>
-      </Aux>
-    );
-  }
+const Span = styled.span `
+  text-transform: 'capitalize';
+`;
+
+const Ul = styled.ul `
+  padding: '0';
+  margin: '0';
+`;
+
+const P = styled.p `
+  padding-top: '10px';
+`;
+
+const orderSummary = (props) => {
+
+  const filmSummary = Object.keys( props.films )
+    .map( filmKey => {
+      return (
+        <Li key={ filmKey }>
+          <Span>{ filmKey }</Span>: { props.films[filmKey] }
+        </Li> );
+      } );
+
+  return (
+    <Aux>
+      <Ul>
+        { filmSummary }
+      </Ul>
+      <P> <strong>Total Price: { props.price.toFixed( 2 ) }</strong></P>
+    </Aux>
+  );
 }
 
-export default OrderSummary;
+export default orderSummary;
